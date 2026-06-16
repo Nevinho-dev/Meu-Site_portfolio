@@ -100,12 +100,10 @@ body {
 <body>
     <!-- Barra de Navegação Superior -->
 <header class="navbar">
-    <!-- Lado Esquerdo: Logo ou Nome do Portfólio -->
     <div class="nav-logo">
         <a href="#">MeuPortfólio</a>
     </div>
 
-    <!-- Centro: Links de Navegação Diretos -->
     <nav class="nav-links">
         <a href="#sobre">Sobre</a>
         <a href="#trabalhos">Trabalhos</a>
@@ -113,21 +111,25 @@ body {
         <a href="#contato">Contato</a>
     </nav>
 
-    <!-- Lado Direito: Barra de Pesquisa e Usuário -->
     <div class="nav-right">
         <div class="search-box">
             <input type="text" placeholder="Buscar...">
             <button type="submit">🔍</button>
         </div>
+        
+        <!-- NOVO: Botão de Modo Noturno -->
+        <button id="theme-toggle" class="theme-btn" title="Mudar tema">☀️</button>
+        
         <div class="user-profile">
             <a href="#perfil" title="Perfil do Usuário">👤</a>
         </div>
     </div>
 </header>
-<!-- Resto do conteúdo do seu site para teste de rolagem -->
-<main style="padding: 20px; margin-top: 80px;">
-    <h2>Bem-vindo ao meu Portfólio</h2>
-    <p>O conteúdo do seu site vai começar aqui...</p>
+
+<!-- Corpo do site para testar a mudança de cor -->
+<main class="content-section">
+    <h1>Bem-vindo ao meu Portfólio</h1>
+    <p>Clique no sol/lua ali no topo para ver o efeito de anoitecer e amanhecer!</p>
 </main>
 
 <section id="sobre">
