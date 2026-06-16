@@ -190,5 +190,22 @@ body {
     <h2>Contato</h2>
     <p>Informações de contato e formulário...</p>
 </section>
+<script>
+    // Seleciona o botão de tema
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    
+    // Escuta o clique no botão
+    themeToggleBtn.addEventListener('click', () => {
+        // Liga ou desliga a classe '.dark-mode' no corpo do site (body)
+        document.body.classList.toggle('dark-mode');
+        
+        // Verifica se o modo escuro está ativo para mudar o emoji
+        if (document.body.classList.contains('dark-mode')) {
+            themeToggleBtn.textContent = '🌙'; // Vira Lua (Anoiteceu)
+        } else {
+            themeToggleBtn.textContent = '☀️'; // Vira Sol (Amanheceu)
+        }
+    });
+</script>
 </body>
 </html>
