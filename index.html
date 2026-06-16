@@ -5,66 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Primeiro Site-Portfólio</title>
     <style>
-        /* Reset básico */
+        /* Definição de Cores (Padrão: Modo Claro / Amanhecer) */
+:root {
+    --bg-principal: #f4f6f9;       /* Fundo do site claro */
+    --bg-navbar: #ffffff;          /* Navbar branca no modo claro */
+    --cor-texto: #1a1a2e;          /* Texto escuro */
+    --cor-links: #4a5568;          /* Links cinza escuros */
+    --cor-destaque: #00adb5;       /* Azul ciano para destaques */
+    --bg-usuario: #e2e8f0;         /* Fundo do ícone de usuário */
+}
+
+/* Cores quando o Modo Escuro for ativado (Anoitecer) */
+.dark-mode {
+    --bg-principal: #121214;       /* Fundo quase preto */
+    --bg-navbar: #1a1a1e;          /* Navbar cinza escura */
+    --cor-texto: #ffffff;          /* Texto branco */
+    --cor-links: #a0aec0;          /* Links cinza claros */
+    --bg-usuario: #2d3748;
+}
+
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* O SEGREDO DA ANIMAÇÃO: O transition no body faz tudo suavizar */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f9;
+    background-color: var(--bg-principal);
+    color: var(--cor-texto);
+    /* Transição de 0.8 segundos simulando o céu mudando de cor */
+    transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
 }
 
-/* Configuração Principal da Navbar */
+/* Configuração da Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1a1a2e; /* Tom escuro moderno */
+    background-color: var(--bg-navbar);
     padding: 15px 30px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* Transição suave para a cor da navbar também */
+    transition: background-color 0.8s ease-in-out, box-shadow 0.8s ease-in-out;
 }
 
-/* Links da Navbar */
 .navbar a {
-    color: #fff;
+    color: var(--cor-links);
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
     transition: color 0.3s;
 }
 
-.navbar a:hover {
-    color: #00adb5; /* Cor azul/ciano ao passar o mouse */
+.navbar a:hover, .nav-logo a {
+    color: var(--cor-destaque);
 }
 
-/* Logo */
-.nav-logo a {
-    font-weight: bold;
-    font-size: 22px;
-    color: #00adb5;
-}
-
-/* Links Centrais (Sobre, Trabalhos, Serviços, Contato) */
 .nav-links {
     display: flex;
-    gap: 30px; /* Espaçamento bom entre os botões */
+    gap: 30px;
 }
 
-/* Lado Direito (Pesquisa e Usuário) */
 .nav-right {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-/* Barra de Pesquisa */
+/* Estilo do Botão de Alternar Tema */
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: transform 0.5s ease; /* Animação de rotação do sol/lua */
+}
+
+/* Faz o emoji dar uma leve girada ao clicar */
+.theme-btn:active {
+    transform: scale(0.9) rotate(30deg);
+}
+
+/* Barra de Pesquisa Adaptável */
 .search-box {
     display: flex;
     align-items: center;
@@ -72,16 +103,19 @@ body {
 
 .search-box input {
     padding: 6px 12px;
-    border: none;
+    border: 1px solid var(--cor-links);
+    background-color: var(--bg-principal);
+    color: var(--cor-texto);
     border-radius: 4px 0 0 4px;
     outline: none;
     font-size: 14px;
+    transition: all 0.8s ease-in-out;
 }
 
 .search-box button {
-    background-color: #00adb5;
+    background-color: var(--cor-destaque);
     border: none;
-    padding: 6px 10px;
+    padding: 7px 10px;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
     color: white;
@@ -90,10 +124,18 @@ body {
 /* Ícone de Usuário */
 .user-profile a {
     font-size: 20px;
-    background-color: #393e46;
+    background-color: var(--bg-usuario);
     padding: 6px 11px;
     border-radius: 50%;
     display: inline-block;
+    transition: background-color 0.8s ease-in-out;
+}
+
+/* Espaçamento do conteúdo para não sumir atrás da navbar */
+.content-section {
+    padding: 40px;
+    margin-top: 100px;
+    text-align: center;
 }
     </style>
 </head>
