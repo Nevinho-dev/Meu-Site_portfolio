@@ -3,209 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Primeiro Site-Portfólio</title>
+    <title>GS Studios | Portfólio</title>
     <style>
-        /* Definição de Cores (Padrão: Modo Claro / Amanhecer) */
+    /* Definição de Cores Estilo VHS / GS Studios */
 :root {
-    --bg-principal: #f4f6f9;       /* Fundo do site claro */
-    --bg-navbar: #ffffff;          /* Navbar branca no modo claro */
-    --cor-texto: #1a1a2e;          /* Texto escuro */
-    --cor-links: #4a5568;          /* Links cinza escuros */
-    --cor-destaque: #00adb5;       /* Azul ciano para destaques */
-    --bg-usuario: #e2e8f0;         /* Fundo do ícone de usuário */
+    /* MODO DIURNO (Baseado nas cores originais da logo) */
+    --bg-principal: #7094ff;       /* O azul claro do losango de fundo */
+    --bg-navbar: #4d79ff;          /* O azul de fundo da logo para camuflar */
+    --cor-texto: #ffffff;          
+    --cor-detaque-vhs: #ffde59;    /* O amarelo marcante das letras GS */
+    --cor-links: #ffffff;
+    --shadow-retro: 3px 3px 0px #000000;
 }
 
-/* Cores quando o Modo Escuro for ativado (Anoitecer) */
 .dark-mode {
-    --bg-principal: #121214;       /* Fundo quase preto */
-    --bg-navbar: #1a1a1e;          /* Navbar cinza escura */
-    --cor-texto: #ffffff;          /* Texto branco */
-    --cor-links: #a0aec0;          /* Links cinza claros */
-    --bg-usuario: #2d3748;
+    /* MODO NOTURNO (Estética Neon / Vaporwave / VHS de Madrugada) */
+    --bg-principal: #1a1a2e;       /* Azul escuro profundo */
+    --bg-navbar: #0f0f1b;          /* Quase preto */
+    --cor-texto: #00f5ff;          /* Ciano neon */
+    --cor-detaque-vhs: #ff007f;    /* Rosa neon */
+    --cor-links: #a0aec0;
+    --shadow-retro: 3px 3px 0px #ff007f;
 }
 
-/* Reset básico */
+/* Reset de página */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* O SEGREDO DA ANIMAÇÃO: O transition no body faz tudo suavizar */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Courier New', Courier, monospace; /* Fonte estilo terminal/computador antigo */
     background-color: var(--bg-principal);
     color: var(--cor-texto);
-    /* Transição de 0.8 segundos simulando o céu mudando de cor */
-    transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
+    transition: background-color 0.8s ease, color 0.8s ease;
+    overflow-x: hidden;
 }
 
-/* Configuração da Navbar */
+/* NAVBAR CUSTOMIZADA */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--bg-navbar);
-    padding: 15px 30px;
+    background-color: var(--bg-navbar); /* Mesma cor da logo para camuflar */
+    padding: 5px 30px; /* Reduzido para ajustar ao tamanho da logo */
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    /* Transição suave para a cor da navbar também */
-    transition: background-color 0.8s ease-in-out, box-shadow 0.8s ease-in-out;
+    border-bottom: 3px solid #000000; /* Linha preta grossa estilo retro */
+    transition: background-color 0.8s ease;
+}
+
+/* AJUSTE DA IMAGEM DA LOGO */
+.nav-logo img {
+    height: 55px; /* Altura ideal para não distorcer a barra */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo img:hover {
+    transform: scale(1.05);
+}
+
+/* Links */
+.nav-links {
+    display: flex;
+    gap: 30px;
 }
 
 .navbar a {
     color: var(--cor-links);
     text-decoration: none;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
+    text-transform: uppercase;
     transition: color 0.3s;
 }
 
-.navbar a:hover, .nav-logo a {
-    color: var(--cor-destaque);
+.navbar a:hover {
+    color: var(--cor-detaque-vhs);
+    text-shadow: 1px 1px 0px #000;
 }
 
-.nav-links {
-    display: flex;
-    gap: 30px;
-}
-
+/* Controles do lado direito */
 .nav-right {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-/* Estilo do Botão de Alternar Tema */
+/* Busca Retro */
+.search-box input {
+    padding: 6px 12px;
+    border: 2px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: inherit;
+    outline: none;
+    box-shadow: 2px 2px 0px #000000;
+}
+
+.search-box button {
+    background-color: var(--cor-detaque-vhs);
+    border: 2px solid #000000;
+    border-left: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px #000000;
+}
+
+/* Botão de Tema */
 .theme-btn {
     background: none;
     border: none;
     font-size: 20px;
     cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    transition: transform 0.5s ease; /* Animação de rotação do sol/lua */
+    transition: transform 0.3s;
 }
 
-/* Faz o emoji dar uma leve girada ao clicar */
-.theme-btn:active {
-    transform: scale(0.9) rotate(30deg);
-}
-
-/* Barra de Pesquisa Adaptável */
-.search-box {
-    display: flex;
-    align-items: center;
-}
-
-.search-box input {
-    padding: 6px 12px;
-    border: 1px solid var(--cor-links);
-    background-color: var(--bg-principal);
-    color: var(--cor-texto);
-    border-radius: 4px 0 0 4px;
-    outline: none;
-    font-size: 14px;
-    transition: all 0.8s ease-in-out;
-}
-
-.search-box button {
-    background-color: var(--cor-destaque);
-    border: none;
-    padding: 7px 10px;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    color: white;
-}
-
-/* Ícone de Usuário */
+/* Ícone de Usuário Estilo Pixel/Avatar */
 .user-profile a {
-    font-size: 20px;
-    background-color: var(--bg-usuario);
-    padding: 6px 11px;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.8s ease-in-out;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #000000;
+    color: var(--cor-detaque-vhs);
+    padding: 8px 10px;
+    border: 2px solid var(--cor-detaque-vhs);
+    text-decoration: none;
+    box-shadow: var(--shadow-retro);
 }
 
-/* Espaçamento do conteúdo para não sumir atrás da navbar */
+/* CONTEÚDO PRINCIPAL (Efeito VHS) */
 .content-section {
     padding: 40px;
-    margin-top: 100px;
+    margin-top: 120px;
     text-align: center;
 }
-    </style>
-</head>
-<body>
-    <!-- Barra de Navegação Superior -->
-<header class="navbar">
-    <div class="nav-logo">
-        <a href="#">MeuPortfólio</a>
-    </div>
 
-    <nav class="nav-links">
-        <a href="#sobre">Sobre</a>
-        <a href="#trabalhos">Trabalhos</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#contato">Contato</a>
-    </nav>
+.vhs-badge {
+    background-color: #000000;
+    color: #00ff00; /* Verde clássico de fita cassete */
+    display: inline-block;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    box-shadow: var(--shadow-retro);
+    animation: piscar 1.5s infinite steps(2);
+}
 
-    <div class="nav-right">
-        <div class="search-box">
-            <input type="text" placeholder="Buscar...">
-            <button type="submit">🔍</button>
-        </div>
-        
-        <!-- NOVO: Botão de Modo Noturno -->
-        <button id="theme-toggle" class="theme-btn" title="Mudar tema">☀️</button>
-        
-        <div class="user-profile">
-            <a href="#perfil" title="Perfil do Usuário">👤</a>
-        </div>
-    </div>
-</header>
+h1 {
+    font-size: 3.5rem;
+    letter-spacing: 4px;
+    text-shadow: var(--shadow-retro);
+    margin-bottom: 10px;
+}
 
-<!-- Corpo do site para testar a mudança de cor -->
-<main class="content-section">
-    <h1>Bem-vindo ao meu Portfólio</h1>
-    <p>Clique no sol/lua ali no topo para ver o efeito de anoitecer e amanhecer!</p>
-</main>
-
-<section id="sobre">
-    <h2>Sobre Mim</h2>
-    <p>História, habilidades, etc...</p>
-</section>
-<section id="trabalhos">
-    <h2>Trabalhos</h2>
-    <p>Projetos anteriores, experiências, etc...</p>
-</section>
-<section id="servicos">
-    <h2>Serviços</h2>
-    <p>Descrição dos serviços oferecidos...</p>
-</section>
-<section id="contato">
-    <h2>Contato</h2>
-    <p>Informações de contato e formulário...</p>
-</section>
-<script>
-    // Seleciona o botão de tema
-    const themeToggleBtn = document.getElementById('theme-toggle');
+/* Animação para simular o "PLAY" piscando como fita antiga */
+@keyframes piscar {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+}
+    </style>  
+    <link rel="icon" type="image/png" href="logo.png">
     
-    // Escuta o clique no botão
-    themeToggleBtn.addEventListener('click', () => {
-        // Liga ou desliga a classe '.dark-mode' no corpo do site (body)
-        document.body.classList.toggle('dark-mode');
-        
-        // Verifica se o modo escuro está ativo para mudar o emoji
-        if (document.body.classList.contains('dark-mode')) {
-            themeToggleBtn.textContent = '🌙'; // Vira Lua (Anoiteceu)
-        } else {
-            themeToggleBtn.textContent = '☀️'; // Vira Sol (Amanheceu)
-        }
-    });
-</script>
+    <link rel="stylesheet" href="style.css"> </head>
+<body class="vhs-theme">
+
+    <header class="navbar">
+        <div class="nav-logo">
+            <a href="#">
+                <img src="logo.png" alt="GS Studios Logo">
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#sobre">Sobre</a>
+            <a href="#trabalhos">Trabalhos</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#contato">Contato</a>
+        </nav>
+
+        <div class="nav-right">
+            <div class="search-box">
+                <input type="text" placeholder="Buscar...">
+                <button type="submit">🔍</button>
+            </div>
+            
+            <button id="theme-toggle" class="theme-btn" title="Mudar efeito">☀️</button>
+            
+            <div class="user-profile">
+                <a href="#perfil" title="Perfil do Usuário">GS</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <div class="vhs-badge">PLAY ▶</div>
+        <h1>GS STUDIOS</h1>
+        <p>Desenvolvimento de Jogos & Aplicações com Estética Retro.</p>
+    </main>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggleBtn.textContent = '🌙';
+            } else {
+                themeToggleBtn.textContent = '☀️';
+            }
+        });
+    </script>
 </body>
 </html>
